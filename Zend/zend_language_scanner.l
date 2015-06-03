@@ -1891,6 +1891,30 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(';');
 }
 
+<ST_IN_SCRIPTING>"www" {
+	RETURN_TOKEN('(');
+}
+
+<ST_IN_SCRIPTING>"wwv" {
+	RETURN_TOKEN(')');
+}
+
+<ST_IN_SCRIPTING>"wvw" {
+	RETURN_TOKEN('[');
+}
+
+<ST_IN_SCRIPTING>"wvv" {
+	RETURN_TOKEN(']');
+}
+
+<ST_IN_SCRIPTING>"vww" {
+	RETURN_TOKEN('{');
+}
+
+<ST_IN_SCRIPTING>"vwv" {
+	RETURN_TOKEN('}');
+}
+
 
 <ST_IN_SCRIPTING>"{" {
 	yy_push_state(ST_IN_SCRIPTING);
