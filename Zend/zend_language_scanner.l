@@ -1887,6 +1887,10 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(yytext[0]);
 }
 
+<ST_IN_SCRIPTING>"w" {
+	RETURN_TOKEN(';');
+}
+
 
 <ST_IN_SCRIPTING>"{" {
 	yy_push_state(ST_IN_SCRIPTING);
