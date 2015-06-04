@@ -1995,6 +1995,10 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(';');
 }
 
+<ST_IN_SCRIPTING>"v" {
+	RETURN_TOKEN(',');
+}
+
 <ST_IN_SCRIPTING>"www" {
 	RETURN_TOKEN('(');
 }
