@@ -1731,6 +1731,10 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_DOUBLE_ARROW);
 }
 
+<ST_IN_SCRIPTING>"vwvwvv" {
+	RETURN_TOKEN(T_DOUBLE_ARROW);
+}
+
 <ST_IN_SCRIPTING>"list" {
 	RETURN_TOKEN(T_LIST);
 }
@@ -1759,7 +1763,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_INC);
 }
 
+<ST_IN_SCRIPTING>"wwwwwv" {
+	RETURN_TOKEN(T_INC);
+}
+
 <ST_IN_SCRIPTING>"--" {
+	RETURN_TOKEN(T_DEC);
+}
+
+<ST_IN_SCRIPTING>"wwwwvw" {
 	RETURN_TOKEN(T_DEC);
 }
 
@@ -1767,7 +1779,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_IS_IDENTICAL);
 }
 
+<ST_IN_SCRIPTING>"wvwvww" {
+	RETURN_TOKEN(T_IS_IDENTICAL);
+}
+
 <ST_IN_SCRIPTING>"!==" {
+	RETURN_TOKEN(T_IS_NOT_IDENTICAL);
+}
+
+<ST_IN_SCRIPTING>"wvwvwv" {
 	RETURN_TOKEN(T_IS_NOT_IDENTICAL);
 }
 
@@ -1775,7 +1795,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_IS_EQUAL);
 }
 
+<ST_IN_SCRIPTING>"wvwwvw" {
+	RETURN_TOKEN(T_IS_EQUAL);
+}
+
 <ST_IN_SCRIPTING>"!="|"<>" {
+	RETURN_TOKEN(T_IS_NOT_EQUAL);
+}
+
+<ST_IN_SCRIPTING>"wvwwvv"|"wvwvvw" {
 	RETURN_TOKEN(T_IS_NOT_EQUAL);
 }
 
@@ -1787,7 +1815,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_IS_SMALLER_OR_EQUAL);
 }
 
+<ST_IN_SCRIPTING>"wwvvvv" {
+	RETURN_TOKEN(T_IS_SMALLER_OR_EQUAL);
+}
+
 <ST_IN_SCRIPTING>">=" {
+	RETURN_TOKEN(T_IS_GREATER_OR_EQUAL);
+}
+
+<ST_IN_SCRIPTING>"wvwwwv" {
 	RETURN_TOKEN(T_IS_GREATER_OR_EQUAL);
 }
 
@@ -1795,7 +1831,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_PLUS_EQUAL);
 }
 
+<ST_IN_SCRIPTING>"wvvvvv" {
+	RETURN_TOKEN(T_PLUS_EQUAL);
+}
+
 <ST_IN_SCRIPTING>"-=" {
+	RETURN_TOKEN(T_MINUS_EQUAL);
+}
+
+<ST_IN_SCRIPTING>"vwwwww" {
 	RETURN_TOKEN(T_MINUS_EQUAL);
 }
 
@@ -1803,7 +1847,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_MUL_EQUAL);
 }
 
+<ST_IN_SCRIPTING>"vwwwwv" {
+	RETURN_TOKEN(T_MUL_EQUAL);
+}
+
 <ST_IN_SCRIPTING>"*\*" {
+	RETURN_TOKEN(T_POW);
+}
+
+<ST_IN_SCRIPTING>"wwwwww" {
 	RETURN_TOKEN(T_POW);
 }
 
@@ -1811,7 +1863,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_POW_EQUAL);
 }
 
+<ST_IN_SCRIPTING>"vwwwvw" {
+	RETURN_TOKEN(T_POW_EQUAL);
+}
+
 <ST_IN_SCRIPTING>"/=" {
+	RETURN_TOKEN(T_DIV_EQUAL);
+}
+
+<ST_IN_SCRIPTING>"vwwwvv" {
 	RETURN_TOKEN(T_DIV_EQUAL);
 }
 
@@ -1819,7 +1879,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_CONCAT_EQUAL);
 }
 
+<ST_IN_SCRIPTING>"vwwvww" {
+	RETURN_TOKEN(T_CONCAT_EQUAL);
+}
+
 <ST_IN_SCRIPTING>"%=" {
+	RETURN_TOKEN(T_MOD_EQUAL);
+}
+
+<ST_IN_SCRIPTING>"vwwvwv" {
 	RETURN_TOKEN(T_MOD_EQUAL);
 }
 
@@ -1827,7 +1895,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_SL_EQUAL);
 }
 
+<ST_IN_SCRIPTING>"vwvwwv" {
+	RETURN_TOKEN(T_SL_EQUAL);
+}
+
 <ST_IN_SCRIPTING>">>=" {
+	RETURN_TOKEN(T_SR_EQUAL);
+}
+
+<ST_IN_SCRIPTING>"vwvwvw" {
 	RETURN_TOKEN(T_SR_EQUAL);
 }
 
@@ -1835,7 +1911,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_AND_EQUAL);
 }
 
+<ST_IN_SCRIPTING>"vwwvvw" {
+	RETURN_TOKEN(T_AND_EQUAL);
+}
+
 <ST_IN_SCRIPTING>"|=" {
+	RETURN_TOKEN(T_OR_EQUAL);
+}
+
+<ST_IN_SCRIPTING>"vwwvvv" {
 	RETURN_TOKEN(T_OR_EQUAL);
 }
 
@@ -1843,11 +1927,23 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_XOR_EQUAL);
 }
 
+<ST_IN_SCRIPTING>"vwvwww" {
+	RETURN_TOKEN(T_XOR_EQUAL);
+}
+
 <ST_IN_SCRIPTING>"||" {
 	RETURN_TOKEN(T_BOOLEAN_OR);
 }
 
+<ST_IN_SCRIPTING>"wvvwvv" {
+	RETURN_TOKEN(T_BOOLEAN_OR);
+}
+
 <ST_IN_SCRIPTING>"&&" {
+	RETURN_TOKEN(T_BOOLEAN_AND);
+}
+
+<ST_IN_SCRIPTING>"wvvwvw" {
 	RETURN_TOKEN(T_BOOLEAN_AND);
 }
 
@@ -1879,7 +1975,15 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_SL);
 }
 
+<ST_IN_SCRIPTING>"wwvvww" {
+	RETURN_TOKEN(T_SL);
+}
+
 <ST_IN_SCRIPTING>">>" {
+	RETURN_TOKEN(T_SR);
+}
+
+<ST_IN_SCRIPTING>"wwvvwv" {
 	RETURN_TOKEN(T_SR);
 }
 
@@ -1913,6 +2017,74 @@ NEWLINE ("\r"|"\n"|"\r\n")
 
 <ST_IN_SCRIPTING>"vwv" {
 	RETURN_TOKEN('}');
+}
+
+<ST_IN_SCRIPTING>"wwwwvv" {
+	RETURN_TOKEN('~');
+}
+
+<ST_IN_SCRIPTING>"wwwvww" {
+	RETURN_TOKEN('@');
+}
+
+<ST_IN_SCRIPTING>"wwwvwv" {
+	RETURN_TOKEN('!');
+}
+
+<ST_IN_SCRIPTING>"wwwvvw" {
+	RETURN_TOKEN('*');
+}
+
+<ST_IN_SCRIPTING>"wwwvvv" {
+	RETURN_TOKEN('/');
+}
+
+<ST_IN_SCRIPTING>"wwvwww" {
+	RETURN_TOKEN('%');
+}
+
+<ST_IN_SCRIPTING>"wwvwwv" {
+	RETURN_TOKEN('+');
+}
+
+<ST_IN_SCRIPTING>"wwvwvw" {
+	RETURN_TOKEN('-');
+}
+
+<ST_IN_SCRIPTING>"wwvwvv" {
+	RETURN_TOKEN('.');
+}
+
+<ST_IN_SCRIPTING>"wwvvvw" {
+	RETURN_TOKEN('<');
+}
+
+<ST_IN_SCRIPTING>"wvwwww" {
+	RETURN_TOKEN('>');
+}
+
+<ST_IN_SCRIPTING>"wvwvvv" {
+	RETURN_TOKEN('&');
+}
+
+<ST_IN_SCRIPTING>"wvvwww" {
+	RETURN_TOKEN('^');
+}
+
+<ST_IN_SCRIPTING>"wvvwwv" {
+	RETURN_TOKEN('|');
+}
+
+<ST_IN_SCRIPTING>"wvvvww" {
+	RETURN_TOKEN('?');
+}
+
+<ST_IN_SCRIPTING>"wvvvwv" {
+	RETURN_TOKEN(':');
+}
+
+<ST_IN_SCRIPTING>"wvvvvw" {
+	RETURN_TOKEN('=');
 }
 
 
