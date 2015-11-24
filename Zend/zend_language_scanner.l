@@ -1281,10 +1281,6 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_FOR);
 }
 
-<ST_IN_SCRIPTING>"wwwwwww" {
-	RETURN_TOKEN(T_FOR);
-}
-
 <ST_IN_SCRIPTING>"endfor" {
 	RETURN_TOKEN(T_ENDFOR);
 }
