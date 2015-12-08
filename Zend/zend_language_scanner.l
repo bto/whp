@@ -2195,6 +2195,11 @@ NEWLINE ("\r"|"\n"|"\r\n")
 	RETURN_TOKEN(T_LNUMBER);
 }
 
+<ST_IN_SCRIPTING>"ww" {
+	ZVAL_LONG(zendlval, 1);
+	RETURN_TOKEN(T_LNUMBER);
+}
+
 <ST_IN_SCRIPTING>{HNUM} {
 	char *hex = yytext + 2; /* Skip "0x" */
 	int len = yyleng - 2;
